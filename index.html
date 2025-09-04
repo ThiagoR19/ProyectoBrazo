@@ -72,7 +72,7 @@
     .empty {
       visibility: hidden;
     }
-    /* Bolita */
+    
     #ball {
       width: 90px;
       height: 90px;
@@ -97,7 +97,6 @@
   <h1>Prueba de Joysticks y Botones</h1>
 
   <div id="controls">
-    <!-- Joystick 1 + Botones -->
     <div class="joystick-container">
       <div id="joystick1" class="circle"></div>
       <p id="info1">X: 0, Y: 0</p>
@@ -114,7 +113,6 @@
       </div>
     </div>
 
-    <!-- Joystick 2 + Botones -->
     <div class="joystick-container">
       <div id="joystick2" class="circle"></div>
       <p id="info2">X: 0, Y: 0</p>
@@ -142,6 +140,10 @@
     let posX = playground.clientWidth / 2;
     let posY = playground.clientHeight / 2;
 
+    const step = 25;
+
+    let intervalId = null;
+
     function updateBall() {
       ball.style.left = posX + "px";
       ball.style.top = posY + "px";
@@ -161,6 +163,30 @@
       }
       updateBall();
     }
+
+    function startMoving(direction) {
+      if (intervalId) clearInterval(intervalId);
+      intervalId = setInterval(() => moveBall(direction), 100); // cada 100ms
+    }
+
+    function stopMoving() {
+      clearInterval(intervalId);
+    }
+
+    const buttons = document.querySelectorAll(".buttons button");
+    buttons.forEach(button => {
+      const dir = button.textContent === '▲' ? 'UP' :
+                  button.textContent === '▼' ? 'DOWN' :
+                  button.textContent === '◀' ? 'LEFT' :
+                  button.textContent === '▶' ? 'RIGHT' :
+                  'CENTER';
+
+      button.addEventListener("mousedown", () => startMoving(dir));
+      button.addEventListener("mouseup", stopMoving);
+      button.addEventListener("mouseleave", stopMoving); // para cuando se arrastra fuera
+      button.addEventListener("touchstart", () => startMoving(dir));
+      button.addEventListener("touchend", stopMoving);
+    });
 
     var joystick1 = nipplejs.create({
       zone: document.getElementById('joystick1'),
