@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Control Web con Joysticks y Botones</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.9.0/nipplejs.min.js"></script>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #efefef;
+      color: white;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    #joystick1,#joystick2 {
+      background-color: #1843de;
+    }
+
+    #controls {
+      display: flex;
+      gap: 100px; /* espacio entre los dos joysticks */
+      margin-bottom: 40px;
+    }
+    .joystick-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .circle {
+      width: 200px;
+      height: 200px;
+      background: #222;
+      border-radius: 50%;
+      position: relative;
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 60px);
+      grid-template-rows: repeat(3, 60px);
+      gap: 8px;
+      justify-content: center;
+    }
+    button {
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background: #444;
+      color: white;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    button:hover {
+      background: #0b97de;
+    }
+    .empty {
+      visibility: hidden;
+    }
+    /* Bolita */
+    #ball {
+      width: 40px;
+      height: 40px;
+      background: rgb(0, 38, 255);
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    #playground {
+      width: 400px;
+      height: 400px;
+      background: #222;
+      border: 2px solid white;
+      position: relative;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Prueba de Joysticks y Botones</h1>
+
+  <div id="controls">
+    <!-- Joystick 1 + Botones -->
+    <div class="joystick-container">
+      <div id="joystick1" class="circle"></div>
+      <p id="info1">X: 0, Y: 0</p>
+      <div class="buttons">
+        <div class="empty"></div>
+        <button onclick="moveBall('UP')">▲</button>
+        <div class="empty"></div>
+        <button onclick="moveBall('LEFT')">◀</button>
+        <button onclick="moveBall('CENTER')">●</button>
+        <button onclick="moveBall('RIGHT')">▶</button>
+        <div class="empty"></div>
+        <button onclick="moveBall('DOWN')">▼</button>
+        <div class="empty"></div>
+      </div>
+    </div>
+
+    <!-- Joystick 2 + Botones -->
+    <div class="joystick-container">
+      <div id="joystick2" class="circle"></div>
+      <p id="info2">X: 0, Y: 0</p>
+      <div class="buttons">
+        <div class="empty"></div>
+        <button onclick="moveBall('UP')">▲</button>
+        <div class="empty"></div>
+        <button onclick="moveBall('LEFT')">◀</button>
+        <button onclick="moveBall('CENTER')">●</button>
+        <button onclick="moveBall('RIGHT')">▶</button>
+        <div class="empty"></div>
+        <button onclick="moveBall('DOWN')">▼</button>
+        <div class="empty"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Zona donde se mueve la bolita -->
+  <div id="playground">
+    <div id="ball"></div>
+  </div>
+
+  <script>
+    // Posición inicial de la bolita
+    let ball = document.getElementById("ball");
+    let playground = document.getElementById("playground");
+    let posX = playground.clientWidth / 2;
+    let posY = playground.clientHeight / 2;
+    const step = 10; // cuanto se mueve con cada botón
+
+    function updateBall() {
+      ball.style.left = posX + "px";
+      ball.style.top = posY + "px";
+    }
+    updateBall();
+
+    // Función para mover la bolita con botones
+    function moveBall(direction) {
+      switch (direction) {
+        case "UP": posY = Math.max(0, posY - step); break;
+        case "DOWN": posY = Math.min(playground.clientHeight, posY + step); break;
+        case "LEFT": posX = Math.max(0, posX - step); break;
+        case "RIGHT": posX = Math.min(playground.clientWidth, posX + step); break;
+        case "CENTER": 
+          posX = playground.clientWidth / 2;
+          posY = playground.clientHeight / 2;
+          break;
+      }
+      updateBall();
+    }
+
+    // Joystick 1
+    var joystick1 = nipplejs.create({
+      zone: document.getElementById('joystick1'),
+      mode: 'static',
+      position: { left: '50%', top: '50%' },
+      color: 'cyan'
+    });
+    joystick1.on('move', function (evt, data) {
+      if (data.vector) {
+        document.getElementById('info1').innerText =
+          'X: ' + data.vector.x.toFixed(2) + ', Y: ' + data.vector.y.toFixed(2);
+        posX += data.vector.x * 2;
+        posY -= data.vector.y * 2;
+        updateBall();
+      }
+    });
+
+    // Joystick 2
+    var joystick2 = nipplejs.create({
+      zone: document.getElementById('joystick2'),
+      mode: 'static',
+      position: { left: '50%', top: '50%' },
+      color: 'cyan'
+    });
+    joystick2.on('move', function (evt, data) {
+      if (data.vector) {
+        document.getElementById('info2').innerText =
+          'X: ' + data.vector.x.toFixed(2) + ', Y: ' + data.vector.y.toFixed(2);
+        posX += data.vector.x * 2;
+        posY -= data.vector.y * 2;
+        updateBall();
+      }
+    });
+  </script>
+</body>
+</html>
