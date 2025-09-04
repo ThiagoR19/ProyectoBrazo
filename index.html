@@ -198,8 +198,8 @@
       if (data.vector) {
         document.getElementById('info1').innerText =
           'X: ' + data.vector.x.toFixed(2) + ', Y: ' + data.vector.y.toFixed(2);
-        posX += data.vector.x * 2;
-        posY -= data.vector.y * 2;
+        posX += data.vector.x * 4;
+        posY -= data.vector.y * 4;
         updateBall();
       }
     });
@@ -214,8 +214,8 @@
       if (data.vector) {
         document.getElementById('info2').innerText =
           'X: ' + data.vector.x.toFixed(2) + ', Y: ' + data.vector.y.toFixed(2);
-        posX += data.vector.x * 2;
-        posY -= data.vector.y * 2;
+        posX += data.vector.x * 4;
+        posY -= data.vector.y * 4;
         updateBall();
       }
     });
