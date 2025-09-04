@@ -19,7 +19,6 @@
 
     h1 {
       color: black;
-
     }
 
     #joystick1,#joystick2 {
@@ -133,18 +132,15 @@
     </div>
   </div>
 
-  <!-- Zona donde se mueve la bolita -->
   <div id="playground">
     <div id="ball"></div>
   </div>
 
   <script>
-    // Posición inicial de la bolita
     let ball = document.getElementById("ball");
     let playground = document.getElementById("playground");
     let posX = playground.clientWidth / 2;
     let posY = playground.clientHeight / 2;
-    const step = 10; // cuanto se mueve con cada botón
 
     function updateBall() {
       ball.style.left = posX + "px";
@@ -152,7 +148,6 @@
     }
     updateBall();
 
-    // Función para mover la bolita con botones
     function moveBall(direction) {
       switch (direction) {
         case "UP": posY = Math.max(0, posY - step); break;
@@ -167,7 +162,6 @@
       updateBall();
     }
 
-    // Joystick 1
     var joystick1 = nipplejs.create({
       zone: document.getElementById('joystick1'),
       mode: 'static',
@@ -184,7 +178,6 @@
       }
     });
 
-    // Joystick 2
     var joystick2 = nipplejs.create({
       zone: document.getElementById('joystick2'),
       mode: 'static',
