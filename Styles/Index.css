@@ -11,7 +11,7 @@ body {
 }
 
 main {
-  background-image: url(FondoWave.png);
+  background-image: url(../Imagenes/FondoWave.png);
   display: flex;
   background-repeat: no-repeat;
   flex-direction: column;
