@@ -1,224 +1,61 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Control Web con Joysticks y Botones</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.9.0/nipplejs.min.js"></script>
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-evenly;
-      background: #efefef;
-      color: white;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      height: 100vh;
-      margin: 0;
-    }
-
-    h1 {
-      color: black;
-    }
-
-    #joystick1,#joystick2 {
-      background-color: #1843de;
-      height: 300px;
-      width: 300px;
-    }
-
-    #controls {
-      display: flex;
-      width: 100%;
-      margin-bottom: 40px;
-      height: 1000px;
-      align-items: center;
-      justify-content: center;
-    }
-    .joystick-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      width: 50%;
-    }
-    .circle {
-      width: 200px;
-      height: 200px;
-      background: #222;
-      border-radius: 50%;
-      position: relative;
-    }
-    .buttons {
-      display: grid;
-      grid-template-columns: repeat(3, 120px);
-      grid-template-rows: repeat(3, 120px);
-      gap: 8px;
-      justify-content: center;
-    }
-    button {
-      font-size: 60px;
-      border: none;
-      border-radius: 10px;
-      background: #444;
-      color: white;
-      cursor: pointer;
-      transition: all .2s;
-    }
-    button:hover {
-      background: #0b97de;
-    }
-    .empty {
-      visibility: hidden;
-    }
-    
-    #ball {
-      width: 120px;
-      height: 120px;
-      background: rgb(255, 0, 0);
-      border-radius: 50%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    #playground {
-      width: 600px;
-      height: 600px;
-      background: #222;
-      border: 2px solid white;
-      position: relative;
-      margin-top: 40px;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/8d348586f9.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="Index.css">
+  <link rel="icon" href="Robot.png">
+  <script defer src="Index.js"></script>
+  <title>Asistente Personal</title>
 </head>
 <body>
-  <h1>Prueba de Joysticks y Botones</h1>
-
-  <div id="controls">
-    <div class="joystick-container">
-      <div id="joystick1" class="circle"></div>
-      <p id="info1">X: 0, Y: 0</p>
-      <div class="buttons">
-        <div class="empty"></div>
-        <button onclick="moveBall('UP')">▲</button>
-        <div class="empty"></div>
-        <button onclick="moveBall('LEFT')">◀</button>
-        <button onclick="moveBall('CENTER')">●</button>
-        <button onclick="moveBall('RIGHT')">▶</button>
-        <div class="empty"></div>
-        <button onclick="moveBall('DOWN')">▼</button>
-        <div class="empty"></div>
-      </div>
-    </div>
-
-    <div class="joystick-container">
-      <div id="joystick2" class="circle"></div>
-      <p id="info2">X: 0, Y: 0</p>
-      <div class="buttons">
-        <div class="empty"></div>
-        <button onclick="moveBall('UP')">▲</button>
-        <div class="empty"></div>
-        <button onclick="moveBall('LEFT')">◀</button>
-        <button onclick="moveBall('CENTER')">●</button>
-        <button onclick="moveBall('RIGHT')">▶</button>
-        <div class="empty"></div>
-        <button onclick="moveBall('DOWN')">▼</button>
-        <div class="empty"></div>
-      </div>
-    </div>
-  </div>
-
-  <div id="playground">
-    <div id="ball"></div>
-  </div>
-
-  <script>
-    let ball = document.getElementById("ball");
-    let playground = document.getElementById("playground");
-    let posX = playground.clientWidth / 2;
-    let posY = playground.clientHeight / 2;
-
-    const step = 25;
-
-    let intervalId = null;
-
-    function updateBall() {
-      ball.style.left = posX + "px";
-      ball.style.top = posY + "px";
-    }
-    updateBall();
-
-    function moveBall(direction) {
-      switch (direction) {
-        case "UP": posY = Math.max(0, posY - step); break;
-        case "DOWN": posY = Math.min(playground.clientHeight, posY + step); break;
-        case "LEFT": posX = Math.max(0, posX - step); break;
-        case "RIGHT": posX = Math.min(playground.clientWidth, posX + step); break;
-        case "CENTER": 
-          posX = playground.clientWidth / 2;
-          posY = playground.clientHeight / 2;
-          break;
-      }
-      updateBall();
-    }
-
-    function startMoving(direction) {
-      if (intervalId) clearInterval(intervalId);
-      intervalId = setInterval(() => moveBall(direction), 100); // cada 100ms
-    }
-
-    function stopMoving() {
-      clearInterval(intervalId);
-    }
-
-    const buttons = document.querySelectorAll(".buttons button");
-    buttons.forEach(button => {
-      const dir = button.textContent === '▲' ? 'UP' :
-                  button.textContent === '▼' ? 'DOWN' :
-                  button.textContent === '◀' ? 'LEFT' :
-                  button.textContent === '▶' ? 'RIGHT' :
-                  'CENTER';
-
-      button.addEventListener("mousedown", () => startMoving(dir));
-      button.addEventListener("mouseup", stopMoving);
-      button.addEventListener("mouseleave", stopMoving); // para cuando se arrastra fuera
-      button.addEventListener("touchstart", () => startMoving(dir));
-      button.addEventListener("touchend", stopMoving);
-    });
-
-    var joystick1 = nipplejs.create({
-      zone: document.getElementById('joystick1'),
-      mode: 'static',
-      position: { left: '50%', top: '50%' },
-      color: 'cyan'
-    });
-    joystick1.on('move', function (evt, data) {
-      if (data.vector) {
-        document.getElementById('info1').innerText =
-          'X: ' + data.vector.x.toFixed(2) + ', Y: ' + data.vector.y.toFixed(2);
-        posX += data.vector.x * 4;
-        posY -= data.vector.y * 4;
-        updateBall();
-      }
-    });
-
-    var joystick2 = nipplejs.create({
-      zone: document.getElementById('joystick2'),
-      mode: 'static',
-      position: { left: '50%', top: '50%' },
-      color: 'cyan'
-    });
-    joystick2.on('move', function (evt, data) {
-      if (data.vector) {
-        document.getElementById('info2').innerText =
-          'X: ' + data.vector.x.toFixed(2) + ', Y: ' + data.vector.y.toFixed(2);
-        posX += data.vector.x * 4;
-        posY -= data.vector.y * 4;
-        updateBall();
-      }
-    });
-  </script>
+  <main>
+    <header>
+      <i class="fa-regular fa-circle-user"></i>
+      <button><i class="fa-solid fa-pen-to-square"></i> Editar</button>
+    </header>
+    <section id="Hero">
+      <h1 class="Hero__h1">Mis Robots</h1>
+      <article class="Hero__article">
+        <div class="Hero__article-div">
+          <img class="Hero__article-div-img" src="Robot.png" alt="Imagen de un Robot">
+          <div class="Hero__article-div-div">
+            <h2>Carl</h2>
+            <img src="Arrow.png" alt="Boton de una flecha hacia la derecha">
+          </div>
+        </div>
+        <div class="Hero__article-div">
+          <img class="Hero__article-div-img" src="Robot.png" alt="Imagen de un Robot">
+          <div class="Hero__article-div-div">
+            <h2>Tina</h2>
+            <img src="Arrow.png" alt="Boton de una flecha hacia la derecha">
+          </div>
+        </div>
+        <div class="Hero__article-div">
+          <img class="Hero__article-div-img" src="Robot.png" alt="Imagen de un Robot">
+          <div class="Hero__article-div-div">
+            <h2>JoJo</h2>
+            <img src="Arrow.png" alt="Boton de una flecha hacia la derecha">
+          </div>
+        </div>
+        <div class="Hero__article-div">
+          <img class="Hero__article-div-img" src="Robot.png" alt="Imagen de un Robot">
+          <div class="Hero__article-div-div">
+            <h2>Carl</h2>
+            <img src="Arrow.png" alt="Boton de una flecha hacia la derecha">
+          </div>
+        </div>
+        <div class="Hero__article-div">
+          <i class="fa-solid fa-location-dot"></i>
+          <h2>Ubicaciones</h2>
+        </div>
+        <div class="Hero__article-div">
+          <i class="fa-solid fa-plus"></i>
+        </div>
+      </article>
+    </section>
+  </main>
 </body>
 </html>
+

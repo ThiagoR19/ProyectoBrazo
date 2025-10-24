@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robot del Nono - Inicio</title>
+  <link rel="stylesheet" href="Inicio.css">
+  <script src="https://kit.fontawesome.com/8d348586f9.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="Hero__body">
+
+  <aside class="Hero__sidebar" id="sidebar">
+    <div class="Hero__sidebar-div">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+    <nav class="Hero__sidebar-nav">
+      <ul class="Hero__sidebar-list">
+        <li class="Hero__sidebar-item"><span>Inicio</span><i class="fa-solid fa-house"></i></li>
+        <li class="Hero__sidebar-item"><span>Mapeado</span><i class="fa-solid fa-map"></i></li>
+        <li class="Hero__sidebar-item"><span>Recordatorios</span><i class="fa-solid fa-bell"></i></li>
+        <li class="Hero__sidebar-item"><span>Llamadas</span><i class="fa-solid fa-phone"></i></li>
+        <li class="Hero__sidebar-item"><span>Brazo</span><i class="fa-solid fa-robot"></i></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="Hero__main">
+
+    <header class="Hero__header">
+      <div class="Hero__header-left">
+        <i class="bi bi-pencil Hero__header-icon"></i>
+        <h1 class="Hero__header-title">Robot del Nono</h1>
+        <i class="bi bi-bookmark-fill Hero__header-bookmark"></i>
+      </div>
+      <i class="bi bi-person-circle Hero__header-user"></i>
+      <i class="bi bi-list Hero__header-menu" id="menu-toggle"></i>
+    </header>
+
+    <section id="Hero" class="Hero__section">
+      
+      <article id="Hero__article1">
+        <div class="Hero__logo">
+          <img src="LogodeAsisTECH.png" alt="">
+        </div>
+
+        <div class="Hero__actions">
+          <div class="Hero__action"><i class="fa-solid fa-power-off"></i><p class="Hero__action-text">Encender</p></div>
+          <div class="Hero__action"><i class="fa-solid fa-video"></i><p class="Hero__action-text">Videollamada</p></div>
+          <div class="Hero__action"><i class="fa-solid fa-house"></i><p class="Hero__action-text">Hogar</p></div>
+          <div class="Hero__action"><i class="fa-solid fa-phone"></i><p class="Hero__action-text">Llamada</p></div>
+          <div class="Hero__action"><i class="fa-solid fa-heart-pulse"></i><p class="Hero__action-text">Estado</p></div>
+        </div>
+      </article>
+        
+      <article id="Hero__article2">
+        <div class="Hero__cards">
+        
+          <div class="Hero__cards-div">
+            <div class="Hero__card">
+              <img src="AduMays.png" alt="Adultos mayores" class="Hero__card-img">
+              <div class="Hero__card-info">
+                <h3 class="Hero__card-title">Aprende a cómo utilizar JoJo a su máximo potencial <a href="#" class="Hero__card-link">ver más...</a></h3>
+              </div>
+            </div>
+
+            <div class="Hero__card">
+              <img src="AduMays.png" alt="Pareja mayor feliz" class="Hero__card-img">
+              <div class="Hero__card-info">
+                <h3 class="Hero__card-title">Aprende a cómo utilizar JoJo a su máximo potencial <a href="#" class="Hero__card-link">ver más...</a></h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="Hero__card--tip">
+            <div class="tip1">
+              <img src="AduMay.png" alt="">
+              <div>
+                <h3>Sabias Qué</h3>
+                <p>La soledad afecta profundamente a los adultos mayores, perjudicando su salud física y mental. Este sentimiento no deseado aumenta el riesgo de depresión, ansiedad y enfermedades cardiovasculares.</p>
+              </div>
+            </div>
+            <div class="tip2">
+              <p>La soledad y el aislamiento social en los adultos mayores se han convertido en un problema de salud pública mundial. Diversas  investigaciones han demostrado que ambas condiciones tienen efectos físicos y psicológicos profundos, capaces de reducir la esperanza de vida y deteriorar la salud general.
+                Estudios recientes muestran una relación directa entre la soledad y el aumento del riesgo de mortalidad. De hecho, se estima que el aislamiento social incrementa en un 26% el riesgo de muerte por cualquier causa, un impacto comparable al del tabaquismo o la obesidad. Según la Organización Mundial de la Salud, la soledad estuvo asociada a más de 871.000 muertes anuales en el mundo entre 2014 y 2019.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const menu = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const closeBtn = sidebar.querySelector('.fa-xmark');
+
+    // Mostrar el sidebar (solo en mobile)
+    menu.addEventListener('click', () => {
+      if (window.innerWidth <= 900) {
+        sidebar.classList.toggle('show');
+      } else {
+        sidebar.classList.toggle('hide');
+      }
+    });
+
+    // Ocultar sidebar al hacer clic en la cruz
+    closeBtn.addEventListener('click', () => {
+      sidebar.classList.remove('show');
+      sidebar.classList.add('hide');
+    });
+
+    // Ajustar automáticamente cuando cambia el tamaño de la ventana
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900) {
+        sidebar.classList.remove('show', 'hide'); // Sidebar siempre visible
+      } else {
+        sidebar.classList.add('hide'); // Sidebar oculto por defecto
+      }
+    });
+</script>
+
+
+</body>
+</html>
