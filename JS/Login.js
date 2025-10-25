@@ -15,7 +15,7 @@ loginBtn.addEventListener("click", (e) => {
 
 buttonInicio.addEventListener("click", (event) => {
   event.preventDefault();
-  window.location.href = '/ProyectoBrazo/Html/Index.html';
+  window.location.href = './Index.html';
 })
 
 function mostrarMain(mainAMostrar, mains) {
