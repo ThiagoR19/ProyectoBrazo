@@ -1,4 +1,3 @@
-const Recortorios = document.querySelector('.Recordatorios')
 const Editar = document.querySelector('.Hero__header-icon')
 const titulo = document.querySelector('.titulo')
 

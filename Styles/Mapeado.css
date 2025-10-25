@@ -11,6 +11,11 @@ body {
   overflow: hidden;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
 .bookmark {
   color: #E6FF00;
 }

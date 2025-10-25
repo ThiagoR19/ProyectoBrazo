@@ -208,3 +208,8 @@ main.Hero__main {
   flex: 1;
   transition: width 0.3s ease;
 }
+
+a {
+  text-decoration: none;
+  color: white;
+}
