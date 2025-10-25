@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+const Recortorios = document.querySelector('.Recordatorios')
+>>>>>>> 069e617 (Agregando los README)
 const Editar = document.querySelector('.Hero__header-icon')
 const titulo = document.querySelector('.titulo')
 
