@@ -8,10 +8,10 @@
   <link rel="stylesheet" href="../Styles/Inicio.css">
   <script src="https://kit.fontawesome.com/8d348586f9.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script defer src="../JS/Inicio.js"></script>
 </head>
 
 <body class="Hero__body">
-
   <aside class="Hero__sidebar hide" id="sidebar">
     <div class="Hero__sidebar-div">
       <i class="fa-solid fa-right-from-bracket"></i>
@@ -113,56 +113,6 @@
       </article>
     </section>
   </main>
-
-  <script>
-    const menu = document.getElementById('menu-toggle');
-    const sidebar = document.getElementById('sidebar');
-    const closeBtn = sidebar.querySelector('.fa-xmark');
-    const Recortorios = document.querySelector('.Recordatorios')
-    const Editar = document.querySelector('.Hero__header-icon')
-    const titulo = document.querySelector('.titulo')
-
-    Editar.addEventListener('click', () => {
-      // Crear un input con el texto actual
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.value = titulo.textContent;
-
-      titulo.replaceWith(input);
-      input.focus();
-
-      input.addEventListener('input', () => {
-        titulo.textContent = input.value;
-      });
-
-      input.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          titulo.textContent = input.value;
-          input.replaceWith(titulo);
-        }
-      });
-    });
-
-    Recortorios.addEventListener('click', () => {
-      window.location.href = "/Html/Recordatorios.html";
-    })
-
-    menu.addEventListener('click', () => {
-      if (window.innerWidth <= 900) {
-        sidebar.classList.toggle('show');
-      } else {
-        sidebar.classList.toggle('hide');
-      }
-    });
-
-    closeBtn.addEventListener('click', () => {
-      sidebar.classList.remove('show');
-      sidebar.classList.add('hide');
-    });
-
-  </script>
-
-
 </body>
 
 </html>
