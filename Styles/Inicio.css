@@ -25,6 +25,7 @@ aside {
   align-items: center;
   justify-content: start;
   min-width: 23vw;
+  position: absolute;
 }
 
 .Hero__sidebar-div {
@@ -57,6 +58,7 @@ aside {
   padding: 5px;
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 header {
@@ -90,7 +92,6 @@ h1 {
 
 #Hero__article1 {
   display: flex;
-  padding: 20px;
   justify-content: center;
   align-items: center;
 }
@@ -98,6 +99,7 @@ h1 {
 #Hero {
   display: flex;
   flex-direction: column;
+  padding: 50px;
 }
 
 #Hero__article2 {
@@ -139,15 +141,16 @@ h1 {
 .Hero__cards-div {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: column;
+  height: 100%;
 }
 
 .Hero__card {
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 0 10px rgb(200, 200, 200);
-  margin: 20px 20px;
+  margin: 20px 0;
 }
 
 
@@ -159,7 +162,7 @@ h3 {
   color: black;
 }
 
-.Hero__card--tip  {
+.Hero__card--tip {
   padding: 10px 30px;
   border-radius: 12px;
   box-shadow: 0 0 10px rgb(200, 200, 200);
@@ -173,7 +176,8 @@ h3 {
   display: flex;
 }
 
-.tip1 div h3, .tip1 div p{
+.tip1 div h3,
+.tip1 div p {
   background-color: rgb(240, 240, 240);
   margin: 10px 0;
   padding: 15px;
@@ -192,6 +196,7 @@ h3 {
   margin: 10px 0;
   padding: 15px;
   border-radius: 8px;
+  font-size: 22px;
 }
 
 .Hero__sidebar.hide {
@@ -204,6 +209,14 @@ h3 {
   transition: transform 0.3s ease;
 }
 
+#menu-toggle {
+  cursor: pointer;
+}
+
+.fa-xmark {
+  cursor: pointer;
+}
+
 @media (max-width: 1200px) {
   .tip1 img {
     object-fit: cover;
@@ -211,6 +224,14 @@ h3 {
   }
 
 }
+
+@media (max-width: 550px) {
+  h1 {
+    font-size: 20px;
+  }
+
+}
+
 
 @media (max-width: 1000px) {
 
@@ -277,7 +298,8 @@ main.Hero__main {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;        /* Ocupa toda la pantalla */
+    width: 100%;
+    /* Ocupa toda la pantalla */
     height: 100vh;
     transform: translateX(-100%);
   }
@@ -287,6 +309,7 @@ main.Hero__main {
   }
 
   .Hero__main {
-    width: 100%;        /* El main ocupa todo el ancho */
+    width: 100%;
+    /* El main ocupa todo el ancho */
   }
 }
