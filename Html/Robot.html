@@ -4,20 +4,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/8d348586f9.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../Styles/Robot.css">
+  <link rel="icon" href="Robot.png">
+  <script defer src="../JS/Robot.js"></script>
+  <script defer src="../JS/Menu.js"></script>
   <title>Document</title>
 </head>
 
 <body>
-  <header>
-    <div>
-      <i></i>
-      <h1>Robot del NoNo</h1>
-      <i></i>
+  <aside class="Hero__sidebar hide" id="sidebar">
+    <div class="Hero__sidebar-div">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <i class="fa-solid fa-xmark"></i>
     </div>
-    <i></i>
-  </header>
+    <nav class="Hero__sidebar-nav">
+      <ul class="Hero__sidebar-list">
+        <li class="Hero__sidebar-item"><span>Inicio</span><i class="fa-solid fa-house"></i></li>
+        <li class="Hero__sidebar-item"><span>Mapeado</span><i class="fa-solid fa-map"></i></li>
+        <li class="Hero__sidebar-item Recordatorios"><span>Recordatorios</span><i class="fa-solid fa-bell"></i></li>
+        <li class="Hero__sidebar-item"><span>Llamadas</span><i class="fa-solid fa-phone"></i></li>
+        <li class="Hero__sidebar-item"><span>Brazo</span><i class="fa-solid fa-robot"></i></li>
+      </ul>
+    </nav>
+  </aside>
 
   <main>
+
+    <header class="Hero__header">
+      <div class="Hero__header-left">
+        <i class="bi bi-pencil Hero__header-icon"></i>
+        <h1 class="Hero__header-title titulo">Robot del Nono</h1>
+        <i class="bi bi-bookmark-fill Hero__header-bookmark"></i>
+      </div>
+      <i class="bi bi-person-circle Hero__header-user"></i>
+      <i class="bi bi-list Hero__header-menu" id="menu-toggle"></i>
+    </header>
 
     <section>
       <img src="" alt="">

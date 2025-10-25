@@ -10,86 +10,6 @@
   min-height: 100vh;
 }
 
-aside {
-  display: flex;
-  width: 400px;
-  background-color: #082592;
-  min-height: 100vh;
-  color: white;
-  justify-content: center;
-}
-
-.Hero__sidebar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
-  min-width: 23vw;
-  position: absolute;
-}
-
-.Hero__sidebar-div {
-  display: flex;
-  justify-content: space-between;
-  width: 85%;
-  margin: 30px 0 10px 0;
-}
-
-.Hero__sidebar-div i {
-  margin: 0 10px;
-  font-size: 35px;
-}
-
-.Hero__sidebar-nav {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-
-.Hero__sidebar-list {
-  list-style: none;
-  width: 90%;
-}
-
-.Hero__sidebar-item {
-  border-bottom: 1.5px solid white;
-  margin: 15px 20px;
-  font-size: 20px;
-  padding: 5px;
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
-}
-
-header {
-  display: flex;
-  height: 10vh;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #082592;
-  color: white;
-}
-
-.Hero__header-left {
-  display: flex;
-  align-items: center;
-}
-
-header i {
-  font-size: 25px;
-  margin: 0 20px;
-}
-
-.Hero__header-bookmark {
-  color: #E2DB1C;
-}
-
-h1 {
-  margin: 0 20px;
-  font-weight: 400;
-}
-
-
 #Hero__article1 {
   display: flex;
   justify-content: center;
@@ -209,24 +129,6 @@ h3 {
   overflow: hidden;
 }
 
-.Hero__sidebar.hide {
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-  position: absolute;
-}
-
-.Hero__sidebar {
-  transition: transform 0.3s ease;
-}
-
-#menu-toggle {
-  cursor: pointer;
-}
-
-.fa-xmark {
-  cursor: pointer;
-}
-
 @media (max-width: 1200px) {
   .tip1 img {
     object-fit: cover;
@@ -296,17 +198,6 @@ h3 {
 
 }
 
-
-/* --- Transiciones y estados --- */
-.Hero__sidebar {
-  transition: transform 0.3s ease;
-  z-index: 1000;
-}
-
-.Hero__sidebar.hide {
-  transform: translateX(-100%);
-}
-
 /* --- Layout general --- */
 .Hero__body {
   display: flex;
@@ -316,31 +207,4 @@ h3 {
 main.Hero__main {
   flex: 1;
   transition: width 0.3s ease;
-}
-
-/* --- VERSIÓN MOBILE --- */
-@media (max-width: 900px) {
-
-  .Hero__action {
-    font-size: 3vw;
-  }
-
-  .Hero__sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    /* Ocupa toda la pantalla */
-    height: 100vh;
-    transform: translateX(-100%);
-  }
-
-  .Hero__sidebar.show {
-    transform: translateX(0);
-  }
-
-  .Hero__main {
-    width: 100%;
-    /* El main ocupa todo el ancho */
-  }
 }

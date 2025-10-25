@@ -29,6 +29,10 @@ header {
   width: 90vw;
 }
 
+a {
+  text-decoration: none;
+}
+
 header button {
   padding: 10px 20px;
   border: none;
@@ -93,7 +97,7 @@ h1 {
   justify-content: space-between;
   align-items: center;
   width: 80%;
-} 
+}
 
 .Hero__article-div-div img {
   height: 50px;

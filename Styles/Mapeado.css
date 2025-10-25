@@ -11,84 +11,27 @@ body {
   overflow: hidden;
 }
 
-/* HEADER */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background: #002F86;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
-  z-index: 100;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.header h1 {
-  font-size: 1.2rem;
-}
-
 .bookmark {
   color: #E6FF00;
 }
 
-.user-icon, .menu-icon {
+.main-content {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.user-icon,
+.menu-icon {
   font-size: 1.5rem;
   cursor: pointer;
-}
-
-/* SIDEBAR */
-.sidebar {
-  position: fixed;
-  top: 60px;
-  left: 0;
-  width: 240px;
-  height: calc(100vh - 60px);
-  background: #002F86;
-  color: white;
-  padding: 1rem;
-  transition: transform 0.3s ease;
-}
-
-.sidebar nav ul {
-  list-style: none;
-}
-
-.sidebar nav ul li {
-  margin: 1.2rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  cursor: pointer;
-  font-size: 1.05rem;
-}
-
-.sidebar nav ul li:hover {
-  color: #E6FF00;
-}
-
-/* MAIN CONTENT */
-.main-content {
-  margin-left: 240px;
-  margin-top: 60px;
-  padding: 1.5rem;
-  flex: 1;
-  overflow-y: auto;
 }
 
 .map-section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 50px 0;
   gap: 1rem;
 }
 
@@ -109,7 +52,7 @@ body {
   border: 1px solid #aaa;
   width: 400px;
   height: 250px;
-  background-image: 
+  background-image:
     linear-gradient(to right, #ccc 1px, transparent 1px),
     linear-gradient(to bottom, #ccc 1px, transparent 1px);
   background-size: 20px 20px;
@@ -119,21 +62,21 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  width: 200px;
+  width: 300px;
 }
 
 .buttons button {
   background: none;
   border: none;
   border-bottom: 1px solid #000;
-  font-size: 1rem;
+  font-size: 20px;
   cursor: pointer;
 }
 
 .tip {
   background: white;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 1rem;
   width: 250px;
 }
@@ -149,27 +92,4 @@ body {
   border-bottom: 1px solid #000;
   width: 150px;
   margin-top: 5px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%);
-  }
-
-  .sidebar.show {
-    transform: translateX(0);
-  }
-
-  .main-content {
-    margin-left: 0;
-  }
-
-  .map-container {
-    width: 90%;
-  }
-
-  .buttons {
-    width: 80%;
-  }
 }
