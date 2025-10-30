@@ -18,16 +18,16 @@
 
 // Select camera model
 //#define CAMERA_MODEL_WROVER_KIT
-#define CAMERA_MODEL_ESP_EYE
+//#define CAMERA_MODEL_ESP_EYE
 //#define CAMERA_MODEL_M5STACK_PSRAM
 //#define CAMERA_MODEL_M5STACK_WIDE
-//#define CAMERA_MODEL_AI_THINKER
+#define CAMERA_MODEL_AI_THINKER
 
 #include "camera_pins.h"
 
 
-#define SSID1 "ssid"
-#define PWD1 "password"
+#define SSID1 "Zhone_0A92"
+#define PWD1 "48354583"
 
 
 OV2640 cam;
