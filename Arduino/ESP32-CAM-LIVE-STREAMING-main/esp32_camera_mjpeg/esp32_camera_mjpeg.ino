@@ -15,6 +15,7 @@
 #include <WiFi.h>
 #include <WebServer.h>
 #include <WiFiClient.h>
+#include <HTTPClient.h>
 
 // Select camera model
 //#define CAMERA_MODEL_WROVER_KIT
@@ -28,7 +29,31 @@
 
 #define SSID1 "Zhone_0A92"
 #define PWD1 "48354583"
+unsigned long ultimoTiempo = 0;
+const unsigned long intervalo = 5000; // 5 segundos
+void leerDatosBD() {
+  if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
 
+    // Construyes la URL con los parámetros action y plataform
+    String url = "https://odimon.42web.io/PHP/index.php?action=joistic&plataform=Robot";
+
+    http.begin(url);
+    int httpCode = http.GET();  // Hacer la solicitud GET
+
+    if (httpCode == HTTP_CODE_OK) {
+      String payload = http.getString();
+      Serial.println("Respuesta del servidor:");
+      Serial.println(payload);
+    } else {
+      Serial.printf("Error HTTP: %d\n", httpCode);
+    }
+
+    http.end();
+  } else {
+    Serial.println("⚠️ No hay conexión WiFi");
+  }
+}
 
 OV2640 cam;
 
@@ -161,4 +186,8 @@ void setup()
 void loop()
 {
   server.handleClient();
+  if (millis() - ultimoTiempo > intervalo) {
+    leerDatosBD();  // función que hace el GET al servidor
+    ultimoTiempo = millis(); // reinicia el contador
+  }
 }

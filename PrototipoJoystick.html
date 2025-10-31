@@ -145,12 +145,16 @@
     let intervalId = null;
 
     function updateBall() {
+      console.log ("holaaaa")
+      console.log(posX)
+      console.log(posY)
       ball.style.left = posX + "px";
       ball.style.top = posY + "px";
     }
     updateBall();
 
     function moveBall(direction) {
+      
       switch (direction) {
         case "UP": posY = Math.max(0, posY - step); break;
         case "DOWN": posY = Math.min(playground.clientHeight, posY + step); break;

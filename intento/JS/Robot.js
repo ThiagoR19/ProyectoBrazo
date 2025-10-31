@@ -1,4 +1,4 @@
-const localizacion = "https://odimon.42web.io/index.php"
+const localizacion = "../PHP/index.php"
 
 const camera = document.getElementById("camera");
 const toggleBtn = document.getElementById("toggle");
@@ -14,25 +14,31 @@ var posX = 512;
 var posY = 512;
 
 async function enviarInfo(){
-    const response = await fetch (localizacion,{
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/json'
+    try{
+        const response = await fetch (localizacion,{
+            method: "POST",
+  			headers: {
+            'Content-Type': 'application/json'
         },
-            body: JSON.stringify({
-            action: "joistic",
-            plataform: "Web",
-            ejeX: ejeX,
-            ejeY: ejeY
-        })
-    });
-    if (!response.ok) throw new Error('Error HTTP ' + response.status);
-    const data = await response.json()
-    if (data.sucess){
-        console.log ("todo ha salido bien");
+  			body:JSON.stringify({
+                action: "joistic",
+                plataform: "Web",
+                ejeX: posX,
+                ejeY: posY
+            })
+        });
+        
+        const data = await response.text()
+        console.log(data)
+        if (data.sucess){
+            console.log ("todo ha salido bien");
+        }
+        else{
+            console.log("todo ha salido mal")
+        }
     }
-    else{
-        console.log("todo ha salido mal")
+    catch (error) {
+        console.error("❌ Eror en fetch:", error);
     }
 }
 
@@ -47,14 +53,10 @@ rightBtn.addEventListener("click", (event) => {
     ejeX("+");
 });
 upBtn.addEventListener("click", (event) => {
-    switch (event.key) {
-    case "ArrowLeft":
-    }
+    ejey("+");
 });
 downBtn.addEventListener("click", (event) => {
-    switch (event.key) {
-    case "ArrowLeft":
-    }
+    ejey("-");
 });
 
 function ejeX(eje){
@@ -71,7 +73,7 @@ function ejeX(eje){
         }
     }
 }
-function ejeY(){
+function ejeY(eje){
     if (eje == "-"){
         if (posY > 10){
             posY -= 10;
@@ -111,4 +113,4 @@ camera.addEventListener("error", () => {
 });
 
 // Iniciar al cargar
-startStream();
+//startStream();
