@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/8d348586f9.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../Styles/Menu.css">
+  <link rel="stylesheet" href="../Styles/Recordatorios.css">
+  <link rel="icon" href="Robot.png">
+  <script defer src="../JS/Menu.js"></script>
+  <script defer src="../JS/Recordatorios.js"></script>
+  <title>Recordatorios</title>
+</head>
+
+<body>
+  <aside class="Hero__sidebar hide" id="sidebar">
+    <div class="Hero__sidebar-div">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+    <nav class="Hero__sidebar-nav">
+      <ul class="Hero__sidebar-list">
+        <li><a href="./Inicio.html" class="Hero__sidebar-item"><span>Inicio</span><i class="fa-solid fa-house"></i></a>
+        </li>
+        <li><a class="Hero__sidebar-item" href="./Mapeado.html"><span>Mapeado</span><i class="fa-solid fa-map"></i></a>
+        </li>
+        <li><a class="Hero__sidebar-item" href="./Recordatorios.html"><span>Recordatorios</span><i
+              class="fa-solid fa-bell"></i></a></li>
+        <li><a class="Hero__sidebar-item" href=""><span>Llamadas</span><i class="fa-solid fa-phone"></i></a></li>
+        <li><a class="Hero__sidebar-item" href="./Robot.html"><span>Brazo</span><i class="fa-solid fa-robot"></i></a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main>
+    <header class="Hero__header">
+      <div class="Hero__header-left">
+        <i class="bi bi-pencil Hero__header-icon"></i>
+        <h1 class="Hero__header-title titulo">Robot del Nono</h1>
+        <i class="bi bi-bookmark-fill Hero__header-bookmark"></i>
+      </div>
+      <i class="bi bi-person-circle Hero__header-user"></i>
+      <i class="bi bi-list Hero__header-menu" id="menu-toggle"></i>
+    </header>
+
+    <section class="Recordatorios">
+      <h2 class="Recordatorios__titulo">Recordatorios</h2>
+
+      <article class="Recordatorios__form">
+        <input type="text" id="inputNombre" class="Recordatorios__form-input" placeholder="Nombre del recordatorio">
+        <input type="date" id="inputFecha" class="Recordatorios__form-input Recordatorios__form-input--fecha">
+        <input type="time" id="inputHora" step="1" class="Recordatorios__form-input Recordatorios__form-input--hora">
+        <button id="btnAgregar" class="Recordatorios__form-boton">Agregar</button>
+      </article>
+
+      <article class="Recordatorios__lista" id="listaRecordatorios">
+        <!-- Los recordatorios se insertan acá -->
+      </article>
+    </section>
+  </main>
+</body>
+
+</html>
